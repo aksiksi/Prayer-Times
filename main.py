@@ -11,7 +11,6 @@
 import twitter
 import time
 import urllib2
-import time
 import lxml.etree as etree
 from datetime import datetime
 
