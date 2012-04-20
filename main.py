@@ -5,32 +5,33 @@
 # http://stackoverflow.com/a/4389549
 # http://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/
 # http://stackoverflow.com/questions/1345827/how-do-i-find-the-time-difference-between-two-datetime-objects-in-python
+# http://woz.thebigbluesky.us/a_curious_absurdity/2009/02/08/web-scraping-with-lxml/
+# http://lxml.de/tutorial.html
 
 import twitter
 import time
 import urllib2
 import time
-from BeautifulSoup import BeautifulSoup
+import lxml.etree as etree
 from datetime import datetime
 
-api = twitter.Api(consumer_key='koBWbHjp2HIwN7Vc35bQBg', consumer_secret='05shhFc7tLPtM6W6EDNihanLjChCNxwd9Wii0HYMOjk', 
-                  access_token_key='558862365-jrYI1A91zsZLA1Z2T4JI6z6557Ig2BETpObo8k6B', 
+api = twitter.Api(consumer_key='koBWbHjp2HIwN7Vc35bQBg', consumer_secret='05shhFc7tLPtM6W6EDNihanLjChCNxwd9Wii0HYMOjk',
+                  access_token_key='558862365-jrYI1A91zsZLA1Z2T4JI6z6557Ig2BETpObo8k6B',
                   access_token_secret='DApa4dZ4sLDQMiC8RVu07PVP6O0BZgo7H9erki17Pk')
 
 def extract():
     ''' Extracts prayer times for Abu Dhabi from http://awqaf.ae/ and parses them accordingly.'''
     response = urllib2.urlopen("http://awqaf.ae/?Lang=EN")
     source = response.read()
+    page = etree.HTML(source)
 
-    soup = BeautifulSoup(source)
-
-    div = soup.find("div", "wrap-4 alignLeft push-left-2").findAll("li")
+    times = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li/text()")[:6]
+    prayers = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li//span/text()")[:6]
 
     salah = {}
 
-    for li in div:
-        salah[li.span.text] = li.text.replace(li.span.text, '')
-
+    for i, j in zip(prayers, times):
+        salah[i] = j
     for key, value in salah.iteritems():
         salah[key] = time.strftime('%H:%M', time.strptime(value, '%I:%M %p')) # Lovely time parsing using the built-in time module
 
