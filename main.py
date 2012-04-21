@@ -20,10 +20,8 @@ api = twitter.Api(consumer_key='koBWbHjp2HIwN7Vc35bQBg', consumer_secret='05shhF
 
 def extract():
     ''' Extracts prayer times for Abu Dhabi from http://awqaf.ae/ and parses them accordingly.'''
-    response = urllib2.urlopen("http://awqaf.ae/?Lang=EN")
-    source = response.read()
-    page = etree.HTML(source)
-
+    page = etree.HTML(urllib2.urlopen("http://awqaf.ae/?Lang=EN").read())
+    
     times = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li/text()")[:6]
     prayers = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li//span/text()")[:6]
 
