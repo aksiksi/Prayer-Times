@@ -1,5 +1,5 @@
-Prayer-Times
-============
+Prayer Times (for Al Ain)
+========================
 
 Automatically tweets prayer times for Al Ain, UAE. All data is scraped from http://awqaf.ae, and then tweaked to represent
 Al Ain local time.
