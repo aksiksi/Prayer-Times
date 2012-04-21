@@ -50,7 +50,7 @@ def main():
         for key, value in sorted(salah.iteritems(), key=lambda (key, value): (value, key)):
             if count == 1:
                 sleep = datetime.strptime(value, '%H:%M') - sleep
-                time.sleep(sleep.seconds - 150)
+                time.sleep(sleep.seconds - 600)
                 sleep, count = 0, 0
             if now == value:
                 api.PostUpdate("It's now time for {0} prayer ({1} in Al Ain).".format(key, value))
