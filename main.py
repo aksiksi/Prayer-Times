@@ -22,6 +22,9 @@ def scrape():
 
     times = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li/text()")[:6]
     prayers = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li//span/text()")[:6]
+    
+    times.pop(1)
+    prayers.pop(1)
 
     salah = {}
 
