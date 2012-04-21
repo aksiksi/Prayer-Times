@@ -2,6 +2,7 @@
 # http://docs.python.org/library/time.html
 # https://code.google.com/p/python-twitter/
 # http://stackoverflow.com/a/4389549
+# http://wolfram.kriesing.de/blog/index.php/2006/learning-how-to-calculate-with-date-and-time-in-python
 # http://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/
 # http://stackoverflow.com/questions/1345827/how-do-i-find-the-time-difference-between-two-datetime-objects-in-python
 
