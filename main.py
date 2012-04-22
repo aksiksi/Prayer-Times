@@ -22,7 +22,7 @@ def scrape():
     times = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li/text()")[:6]
     prayers_en = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li//span/text()")[:6]
 
-    times.pop(1) # Remove shurooq from scraped data
+    times.pop(1)
     prayers_en.pop(1)
 
     salah = {}
@@ -42,7 +42,6 @@ def main():
     sleep = 0 # Set this to a default value
 
     print "Currently running. Please do not close this window.\n"
-    print "Wake up in {0} hours".format(sleep)
 
     time.sleep(sleep * 3600) # Initial sleep
 
