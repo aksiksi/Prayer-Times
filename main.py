@@ -22,7 +22,7 @@ def scrape():
     times = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li/text()")[:6]
     prayers_en = page.xpath("//div[contains(@class, 'wrap-4 alignLeft push-left-2')]//li//span/text()")[:6]
 
-    times.pop(1)
+    times.pop(1) # Remove shurooq from scraped data
     prayers_en.pop(1)
 
     salah = {}
