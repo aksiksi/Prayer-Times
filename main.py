@@ -11,9 +11,9 @@ import urllib2
 import lxml.etree as etree
 from datetime import datetime, timedelta
 
-api = twitter.Api(consumer_key='koBWbHjp2HIwN7Vc35bQBg', consumer_secret='05shhFc7tLPtM6W6EDNihanLjChCNxwd9Wii0HYMOjk',
-                  access_token_key='558862365-jrYI1A91zsZLA1Z2T4JI6z6557Ig2BETpObo8k6B',
-                  access_token_secret='DApa4dZ4sLDQMiC8RVu07PVP6O0BZgo7H9erki17Pk')
+api = twitter.Api(consumer_key='', consumer_secret='',
+                  access_token_key='',
+                  access_token_secret='')
 
 def scrape():
     ''' Scrapes prayer times for Abu Dhabi from http://awqaf.ae/ and parses them accordingly.'''
